@@ -3,12 +3,14 @@ require_once __DIR__ . "/Product.php";
 
 class ProductClothes extends Product {
 
-    protected $color = "";
-    protected $size = "";
+    public $color = "";
+    public $size = "";
 
-    public function setClothesProperty($colorValue, $sizeValue){
-        $this->color = $colorValue;
-        $this->size = $sizeValue;
+    function __construct($_item)
+    {
+        parent::__construct($_item);
+        $this->color = $_item["color"];
+        $this->size = $_item["size"];
     }
 
 }

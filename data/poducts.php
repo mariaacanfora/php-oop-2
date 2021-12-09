@@ -31,7 +31,7 @@ $poductsList = [
         "t-shirt" => [
             "brand" => "Nike", 
             "description" => "description of Nike's t-shirt",
-            "price" => "19.99£", 
+            "price" => "19.99€", 
             "color" => "black and white",
             "size" => "M"
         ],
@@ -39,7 +39,7 @@ $poductsList = [
         "sneakers" => [
             "brand" => "Adidas", 
             "description" => "description of Adidas sneakers",
-            "price" => "79.99£", 
+            "price" => "79.99€", 
             "color" => "red",
             "size" => "42"
         ],
@@ -47,7 +47,7 @@ $poductsList = [
         "shorts" => [
             "brand" => "Puma", 
             "description" => "description of Puma's shorts",
-            "price" => "39.99£", 
+            "price" => "39.99€", 
             "color" => "blue and yellow",
             "size" => "L"
         ],
