@@ -7,6 +7,8 @@ require_once __DIR__ . "/data/poducts.php";
 
 $productsTechList = [];
 $productsClothesList = [];
+$userDataException = false;
+$paymentMethodException = false; 
 
 //generate lists of products based on their type
 foreach ($poductsList as $type => $typeListProducts) {
@@ -30,11 +32,32 @@ var_dump($productsClothesList);
 
 
 
-$user1 = new UserPrime("Mario", "Rossi");
+try {
+    $user1 = new UserPrime("Mario", "Rossi");
+} catch (Exception $e) {
+    $userDataException = true; 
+    echo "Attenzione: " . $e->getMessage();
+}
+
+if ($userDataException) {
+    return;
+}
+
 $user1->addToCart($productsTechList[2], $productsClothesList[2]);
 echo "<h1 style='color: red;'> Carrello di " . $user1->getUserData() . "</h1>";
 $cart = $user1->getCartList();
-$user1->addPaymentMethods("cash");
+
+
+try {
+    $user1->addPaymentMethods("payPal");
+} catch (Exception $e) {
+    $paymentMethodException = true;
+    echo "Attenzione: " . $e->getMessage();
+}
+
+if ($paymentMethodException) {
+    return;
+}
 
 foreach ($cart as $key => $item) {
     //var_dump($item);

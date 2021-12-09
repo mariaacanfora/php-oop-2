@@ -1,44 +1,52 @@
 <?php
 
-require_once __DIR__ . "/../traits/cartTraits.php";
+require_once __DIR__ . "/../traits/CartTraits.php";
+require_once __DIR__ . "/../traits/PaymentMethods.php";
 class User{
 
     protected $userName = "";
     protected $userSurname = "";
-    
-    protected $paymentMethods = [
-        "creditCard" => true,
-        "payPal" => false ,
-        "cash" => false
-    ];
+
 
     protected $totalPrice;
     use CartTrait;
-    //protected $cart = [];
+    use PaymentMethods;
 
     function __construct($name, $surname)
     {
-        $this->userName = $name;
-        $this->userSurname = $surname;
+        /* $this->userName = $name;
+        $this->userSurname = $surname; */
+
+        $this->setUserData($name, $surname);
     }
 
     public function getUserData(){
         return $this->userName . " " . $this->userSurname;
     }
 
-    /* public function addToCart(...$_product){
-        $this->cart = $_product;
+
+    protected function setUserData($_name, $_surname){
+
+        if (preg_match('~[0-9]+~', $_name) || preg_match('~[0-9]+~', $_surname)) {
+            throw new Exception("I dati dell'utente non possono contenere caratteri numerici");
+        }
+
+        $this->userName = $_name;
+        $this->userSurname = $_surname;
     }
 
-    public function getCartList(){
-        return $this->cart;
-    } */
+
 
     public function addPaymentMethods($_method){
+
+        if (!array_key_exists($_method, $this->paymentMethods)) {
+            throw new Exception("Il metodo di pagamento inserito non è disponibile!");
+        }
+
         foreach ($this->paymentMethods as $method => $bool) {
             if ($method === $_method) {
                 $this->paymentMethods[$method] = true;
-            } else {
+            } else{
                 $this->paymentMethods[$method] = false;
             }
         }
