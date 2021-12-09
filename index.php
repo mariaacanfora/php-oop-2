@@ -30,6 +30,7 @@ $user1 = new UserPrime("Mario", "Rossi");
 $user1 ->addToCart($productsTechList[2], $productsClothesList[2]);
 echo "<h1 style='color: red;'> Carrello di " . $user1->getUserData() . "</h1>";
 $cart = $user1->getCartList();
+$user1->addPaymentMethods("cash");
 
 foreach ($cart as $key => $item) {
     //var_dump($item);
@@ -47,7 +48,12 @@ foreach ($cart as $key => $item) {
 }
 
 echo "<h3 style='color: blue;'> Totale: " . $user1->getTotal() . "</h3>";
-echo "<h3 style='color: green;'> Totale riservato ad utenti prime (20% di sconto):  " . $user1->getScountPrime();
+echo "<h3 style='color: green;'> Totale riservato ad utenti prime (20% di sconto):  " . $user1->getScountPrime() . "</h3>";
+foreach ($user1->getPaymentMethods() as $method => $bool) {
+    if ($bool) {
+        echo "<h4 style='font-style: italic'> Metodo di pagamento: " . $method . "</h4>";
+    }
+}
 
 
 
