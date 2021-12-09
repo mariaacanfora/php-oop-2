@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . "/../traits/cartTraits.php";
 class User{
 
     protected $userName = "";
@@ -12,8 +13,8 @@ class User{
     ];
 
     protected $totalPrice;
-
-    protected $cart = [];
+    use CartTrait;
+    //protected $cart = [];
 
     function __construct($name, $surname)
     {
@@ -25,13 +26,13 @@ class User{
         return $this->userName . " " . $this->userSurname;
     }
 
-    public function addToCart(...$_product){
+    /* public function addToCart(...$_product){
         $this->cart = $_product;
     }
 
     public function getCartList(){
         return $this->cart;
-    }
+    } */
 
     public function addPaymentMethods($_method){
         foreach ($this->paymentMethods as $method => $bool) {

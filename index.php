@@ -25,9 +25,13 @@ foreach ($poductsList as $type => $typeListProducts) {
     }
 }
 
+var_dump($productsTechList);
+var_dump($productsClothesList);
+
+
 
 $user1 = new UserPrime("Mario", "Rossi");
-$user1 ->addToCart($productsTechList[2], $productsClothesList[2]);
+$user1->addToCart($productsTechList[2], $productsClothesList[2]);
 echo "<h1 style='color: red;'> Carrello di " . $user1->getUserData() . "</h1>";
 $cart = $user1->getCartList();
 $user1->addPaymentMethods("cash");
@@ -54,6 +58,8 @@ foreach ($user1->getPaymentMethods() as $method => $bool) {
         echo "<h4 style='font-style: italic'> Metodo di pagamento: " . $method . "</h4>";
     }
 }
+
+
 
 
 
