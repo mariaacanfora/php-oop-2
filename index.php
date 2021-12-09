@@ -8,6 +8,7 @@ require_once __DIR__ . "/data/poducts.php";
 $productsTechList = [];
 $productsClothesList = [];
 
+//generate lists of products based on their type
 foreach ($poductsList as $type => $typeListProducts) {
     echo "<h1>" . $type . "</h1>";
     foreach ($poductsList[$type] as $prop => $item) {
@@ -31,7 +32,18 @@ echo "<h1 style='color: red;'> Carrello di " . $user1->getUserData() . "</h1>";
 $cart = $user1->getCartList();
 
 foreach ($cart as $key => $item) {
-    var_dump($item);
+    //var_dump($item);
+    echo "<h3 style='margin: 0'> Prodotto ". $key + 1 ."</h3>";
+    echo "<ul style='margin: 0'>";
+    foreach ($item as $name => $value) {
+        if ($name === "price") {
+            echo "<li>" . $name . ": " . $value. "€</li>";
+        } else {
+            echo "<li>" . $name . ": " . $value. "</li>";
+        }
+        
+    }
+    echo "</ul>";
 }
 
 echo "<h3 style='color: blue;'> Totale: " . $user1->getTotal() . "</h3>";

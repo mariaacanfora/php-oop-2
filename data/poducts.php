@@ -15,7 +15,7 @@ $poductsList = [
             "version" => "NSeries 970JK",
             "year" => "2020",
             "description" => "description of Asus NSeries 970JK",
-            "price" => "1199€"
+            "price" => "1199"
         ],
 
         "tablet" => [

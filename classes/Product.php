@@ -22,7 +22,7 @@ class Product {
     }
 
     public function getPrice(){
-        return $this->price;
+        return $this->price ;
     }
 
     public function getProduct(){
